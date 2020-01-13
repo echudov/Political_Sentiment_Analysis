@@ -1,9 +1,9 @@
-import argparse
+import MyArticle
 
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
-def analyze(filename):
+def analyze(article):
     client = language.LanguageServiceClient()
 
     with open(filename, 'r') as articleFile:
