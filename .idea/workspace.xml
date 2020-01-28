@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="09a86893-fce4-4baa-b732-abd4a92151d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/sources.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyArticle.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyArticle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_analysis_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_analysis_functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,13 +150,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578958322745</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="scraped &amp; parsed all of the allsides data into sources.pkl&#10;must use pickle to unpack it into a massive dictionary (~600 sources)&#10;next steps:&#10;1. scrape/grab all of the words and their hierarchies (bad time probably)&#10;2. determine subjects of sentences with google nlp&#10;3. sentiment score towards subjects&#10;4. combine that with the leaning of phrases to create rough bias&#10;&#10;possible routes after this is all done:&#10;1. refine the bias metric, something more intuitive/mathematically grounded&#10;2. somehow include omission bias (sounds like a bad time but there might be a cool way to do this without wanting 2 die)">
+      <created>1580233040827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580233040827</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minor dependency changes&#10;&#10;changed article parsing api from boilerpy3 to newspaper&#10;&#10;next steps:&#10;1. source necessary political sentiment data&#10;2. organize that shid&#10;3. create infrastructure to use google nlp sent analysis (fairly straightforward once data structures are determined" />
     <MESSAGE value="scraped &amp; parsed all of the allsides data into sources.pkl&#10;must use pickle to unpack it into a massive dictionary (~600 sources)&#10;next steps:&#10;1. scrape/grab all of the words and their hierarchies (bad time probably)&#10;2. determine subjects of sentences with google nlp&#10;3. sentiment score towards subjects&#10;4. combine that with the leaning of phrases to create rough bias&#10;&#10;possible routes after this is all done:&#10;1. refine the bias metric, something more intuitive/mathematically grounded&#10;2. somehow include omission bias (sounds like a bad time but there might be a cool way to do this without wanting 2 die)" />
-    <option name="LAST_COMMIT_MESSAGE" value="scraped &amp; parsed all of the allsides data into sources.pkl&#10;must use pickle to unpack it into a massive dictionary (~600 sources)&#10;next steps:&#10;1. scrape/grab all of the words and their hierarchies (bad time probably)&#10;2. determine subjects of sentences with google nlp&#10;3. sentiment score towards subjects&#10;4. combine that with the leaning of phrases to create rough bias&#10;&#10;possible routes after this is all done:&#10;1. refine the bias metric, something more intuitive/mathematically grounded&#10;2. somehow include omission bias (sounds like a bad time but there might be a cool way to do this without wanting 2 die)" />
+    <MESSAGE value="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me" />
+    <option name="LAST_COMMIT_MESSAGE" value="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me" />
   </component>
   <component name="WindowStateProjectService">
     <state x="651" y="405" width="608" height="423" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578956987868">
@@ -167,10 +175,10 @@
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
     <state x="693" y="362" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1173@0.27.1920.1173" timestamp="1578957045333" />
-    <state x="358" y="27" width="926" height="846" key="CommitChangelistDialog2" timestamp="1578958320953">
+    <state x="358" y="27" width="926" height="846" key="CommitChangelistDialog2" timestamp="1580235875858">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
-    <state x="358" y="27" width="926" height="846" key="CommitChangelistDialog2/0.27.1920.1173@0.27.1920.1173" timestamp="1578958320953" />
+    <state x="358" y="27" width="926" height="846" key="CommitChangelistDialog2/0.27.1920.1173@0.27.1920.1173" timestamp="1580235875858" />
     <state x="738" y="377" width="424" height="491" key="FileChooserDialogImpl" timestamp="1577474346944">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
@@ -183,26 +191,30 @@
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
     <state x="680" y="322" width="549" height="590" key="Github.UntrackedFilesDialog/0.27.1920.1173@0.27.1920.1173" timestamp="1577465502719" />
-    <state width="1874" height="291" key="GridCell.Tab.0.bottom" timestamp="1579236613358">
+    <state width="1874" height="214" key="GridCell.Tab.0.bottom" timestamp="1580234744493">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
-    <state width="1874" height="291" key="GridCell.Tab.0.bottom/0.27.1920.1173@0.27.1920.1173" timestamp="1579236613358" />
-    <state width="1874" height="291" key="GridCell.Tab.0.center" timestamp="1579236613357">
+    <state width="1874" height="214" key="GridCell.Tab.0.bottom/0.27.1920.1173@0.27.1920.1173" timestamp="1580234744493" />
+    <state width="1874" height="214" key="GridCell.Tab.0.center" timestamp="1580234744492">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
-    <state width="1874" height="291" key="GridCell.Tab.0.center/0.27.1920.1173@0.27.1920.1173" timestamp="1579236613357" />
-    <state width="1874" height="291" key="GridCell.Tab.0.left" timestamp="1579236613356">
+    <state width="1874" height="214" key="GridCell.Tab.0.center/0.27.1920.1173@0.27.1920.1173" timestamp="1580234744492" />
+    <state width="1874" height="214" key="GridCell.Tab.0.left" timestamp="1580234744491">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
-    <state width="1874" height="291" key="GridCell.Tab.0.left/0.27.1920.1173@0.27.1920.1173" timestamp="1579236613356" />
-    <state width="1874" height="291" key="GridCell.Tab.0.right" timestamp="1579236613358">
+    <state width="1874" height="214" key="GridCell.Tab.0.left/0.27.1920.1173@0.27.1920.1173" timestamp="1580234744491" />
+    <state width="1874" height="214" key="GridCell.Tab.0.right" timestamp="1580234744493">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
-    <state width="1874" height="291" key="GridCell.Tab.0.right/0.27.1920.1173@0.27.1920.1173" timestamp="1579236613358" />
+    <state width="1874" height="214" key="GridCell.Tab.0.right/0.27.1920.1173@0.27.1920.1173" timestamp="1580234744493" />
     <state x="448" y="247" width="1022" height="737" key="SettingsEditor" timestamp="1578682739048">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
     <state x="448" y="247" width="1022" height="737" key="SettingsEditor/0.27.1920.1173@0.27.1920.1173" timestamp="1578682739048" />
+    <state x="555" y="345" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1580233055593">
+      <screen x="0" y="27" width="1920" height="1173" />
+    </state>
+    <state x="555" y="345" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1920.1173@0.27.1920.1173" timestamp="1580233055593" />
     <state x="616" y="440" key="com.intellij.ide.util.TipDialog" timestamp="1580233024336">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>

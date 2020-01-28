@@ -8,9 +8,9 @@ class  MyArticle:
         self.article = Article(url)
         self.article.download()
         self.article.parse()
-        print(self.article.title)
-        print(self.article.authors)
-        print(self.article.text)
+        # print(self.article.title)
+        # print(self.article.authors)
+        # print(self.article.text)
 
     def get_baseline(self):
         # parse from allsides
