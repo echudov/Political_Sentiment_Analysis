@@ -6,6 +6,7 @@ class MyArticle:
     def __init__(self, url):
         self.url = url
         self.article = Article(url)
+        '''
         print("downloading")
         t0 = time.time()
         self.article.download()
@@ -14,9 +15,20 @@ class MyArticle:
         print("parsing")
         self.article.parse()
         print(time.time() - t1)
+        '''
         # print(self.article.title)
         # print(self.article.authors)
         # print(self.article.text)
+
+    def download_and_parse(self):
+        print("downloading")
+        t0 = time.time()
+        self.article.download()
+        t1 = time.time()
+        print(t1 - t0)
+        print("parsing")
+        self.article.parse()
+        print(time.time() - t1)
 
     def get_baseline(self):
         # parse from allsides
