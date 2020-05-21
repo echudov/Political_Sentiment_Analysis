@@ -1,13 +1,19 @@
 from newspaper import Article
+import time
 
-
-class  MyArticle:
+class MyArticle:
 
     def __init__(self, url):
         self.url = url
         self.article = Article(url)
+        print("downloading")
+        t0 = time.time()
         self.article.download()
+        t1 = time.time()
+        print(t1-t0)
+        print("parsing")
         self.article.parse()
+        print(time.time() - t1)
         # print(self.article.title)
         # print(self.article.authors)
         # print(self.article.text)
@@ -31,3 +37,4 @@ class  MyArticle:
 
 if __name__ == '__main__':
     art = MyArticle('https://www.politico.com/news/2020/01/09/tom-steyer-qualifies-democratic-debate-096915')
+    art2 = MyArticle('https://www.axios.com/nikki-haley-dylan-roof-hijacked-confederate-flag-c96a474f-3331-49ed-834d-88e5390ad3ef.html')

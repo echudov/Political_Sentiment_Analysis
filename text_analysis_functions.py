@@ -35,21 +35,22 @@ def analyze(art):
         # the metadata is a Wikipedia URL (wikipedia_url) and Knowledge Graph MID (mid).
         # Some entity types may have additional metadata, e.g. ADDRESS entities
         # may have metadata for the address street_name, postal_code, et al.
-        # for metadata_name, metadata_value in entity.metadata.items():
-        #     print(u"{} = {}".format(metadata_name, metadata_value))
+        for metadata_name, metadata_value in entity.metadata.items():
+            print(u"{} = {}".format(metadata_name, metadata_value))
 
         # Loop over the mentions of this entity in the input document.
         # The API currently supports proper noun mentions.
 
-        # for mention in entity.mentions:
-        #     print(u"Mention text: {}".format(mention.text.content))
-        #     # Get the mention type, e.g. PROPER for proper noun
-        #     print(
-        #         u"Mention type: {}".format(enums.EntityMention.Type(mention.type).name)
-        #     )
+        for mention in entity.mentions:
+            print(u"Mention text: {}".format(mention.text.content))
+            # Get the mention type, e.g. PROPER for proper noun
+            print(
+                u"Mention type: {}".format(enums.EntityMention.Type(mention.type).name)
+            )
 
     with open("sources.pkl", "rb") as file:
         sources = pickle.load(file)
+
 
 if __name__ == '__main__':
     analyze(MyArticle('https://www.politico.com/news/2020/01/09/tom-steyer-qualifies-democratic-debate-096915'))
