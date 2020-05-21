@@ -5,6 +5,7 @@ from newspaper import Article
 from threading import Thread
 import queue
 import traceback
+import time
 
 
 class Worker(Thread):
@@ -42,7 +43,7 @@ class ThreadPool:
         self.tasks.join()
 
 
-def concurrentlyParse(articles, threads=5, timeout_seconds=10):
+def concurrently_parse(articles, threads=5, timeout_seconds=10):
     pool = ThreadPool(threads, timeout_seconds)
     for art in articles:
         pool.add_task(func=art.download_and_parse, args=None, kwargs=None)
@@ -56,5 +57,7 @@ if __name__ == '__main__':
     # we will need to multithread this process, as it requires downloading data from multiple sources.
     # The parsing itself isn't the bottleneck, but rather the sources themselves,
     # so hopefully multithreading fixes that.
-    articles = {link: MyArticle(str(link)) for link in pd.Series.tolist(df['External Article Link'])}
-    concurrentlyParse(articles.values())
+    t0 = time.time()
+    arts = {link: MyArticle(str(link)) for link in pd.Series.tolist(df['External Article Link'])[:100]}
+    concurrently_parse(arts.values())
+    print(str(time.time() - t0) + ' seconds')

@@ -6,6 +6,13 @@ class MyArticle:
     def __init__(self, url):
         self.url = url
         self.article = Article(url)
+        self.parsed = False
+        self.download_time = None
+        self.parse_time = None
+        self.text = None
+        self.title = None
+        self.authors = None
+        self.nlp_info = None
         '''
         print("downloading")
         t0 = time.time()
@@ -21,14 +28,23 @@ class MyArticle:
         # print(self.article.text)
 
     def download_and_parse(self):
-        print("downloading")
         t0 = time.time()
         self.article.download()
-        t1 = time.time()
-        print(t1 - t0)
-        print("parsing")
+        self.download_time = time.time() - t0
+
+        t0 = time.time()
         self.article.parse()
-        print(time.time() - t1)
+        self.parse_time = time.time() - t0
+
+        self.text = self.article.text
+        self.title = self.article.title
+        self.authors = self.article.authors
+        self.article = None
+        self.parsed = True
+
+    def convert_to_json_file(self):
+        self.download_and_parse()
+
 
     def get_baseline(self):
         # parse from allsides
