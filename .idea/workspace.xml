@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="09a86893-fce4-4baa-b732-abd4a92151d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="09a86893-fce4-4baa-b732-abd4a92151d7" name="Default Changelist" comment="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me&#10;&#10;fixed local google credential path error">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/elia.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neural_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reading_through_gnlp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyArticle.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyArticle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraping_training_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraping_training_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +41,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/venv2/lib/python3.7" />
@@ -40,7 +56,7 @@
       <recent name="$PROJECT_DIR$/venv2/lib/python3.7/" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.scraping_training_data">
+  <component name="RunManager" selected="Python.neural_net">
     <configuration name="MyArticle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Political_Sentiment_Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -62,7 +78,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="parsing_allsides_html" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="neural_net" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Political_Sentiment_Analysis" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -74,7 +90,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parsing_allsides_html.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_net.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="reading_through_gnlp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Political_Sentiment_Analysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reading_through_gnlp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -127,10 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.scraping_training_data" />
+        <item itemvalue="Python.neural_net" />
         <item itemvalue="Python.MyArticle" />
+        <item itemvalue="Python.scraping_training_data" />
+        <item itemvalue="Python.reading_through_gnlp" />
         <item itemvalue="Python.text_analysis_functions" />
-        <item itemvalue="Python.parsing_allsides_html" />
       </list>
     </recent_temporary>
   </component>
@@ -140,7 +178,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="09a86893-fce4-4baa-b732-abd4a92151d7" name="Default Changelist" comment="" />
-      <changelist id="d1cd8e71-8855-4dd7-a072-a374b928b53a" name="now getting sentiment &amp; entity values/info from google cloud nlp" comment="" />
       <created>1577465452140</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -247,60 +284,68 @@
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="1691" y="964" width="515" height="257" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1584298361075" />
+    <state x="2619" y="842" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590168494550">
+      <screen x="67" y="27" width="3773" height="2133" />
+    </state>
+    <state x="2619" y="842" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1590168494550" />
     <state x="1622" y="687" width="652" height="811" key="#text_analysis_functions" timestamp="1584647651239">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="1622" y="687" width="652" height="811" key="#text_analysis_functions/67.27.3773.2133@67.27.3773.2133" timestamp="1584647651239" />
-    <state x="358" y="27" width="912" height="915" key="CommitChangelistDialog2" timestamp="1590090729488">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state x="771" y="27" width="1337" height="1093" key="CommitChangelistDialog2" timestamp="1590092666165">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="358" y="27" width="912" height="915" key="CommitChangelistDialog2/0.27.1920.1173@0.27.1920.1173" timestamp="1590090729488" />
-    <state x="771" y="27" key="CommitChangelistDialog2/67.27.3773.2133@67.27.3773.2133" timestamp="1584648389339" />
-    <state x="1517" y="663" width="501" height="484" key="FileChooserDialogImpl" timestamp="1584646850760">
+    <state x="771" y="27" width="1337" height="1093" key="CommitChangelistDialog2/67.27.3773.2133@67.27.3773.2133" timestamp="1590092666165" />
+    <state x="1517" y="663" width="501" height="484" key="FileChooserDialogImpl" timestamp="1590092277116">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
-    <state x="1517" y="663" width="501" height="484" key="FileChooserDialogImpl/67.27.3773.2133@67.27.3773.2133" timestamp="1584646850760" />
-    <state width="1874" height="259" key="GridCell.Tab.0.bottom" timestamp="1590089747377">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state x="1517" y="663" width="501" height="484" key="FileChooserDialogImpl/67.27.3773.2133@67.27.3773.2133" timestamp="1590092277116" />
+    <state width="1841" height="632" key="GridCell.Tab.0.bottom" timestamp="1591568712638">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.bottom/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747377" />
-    <state width="1863" height="611" key="GridCell.Tab.0.bottom/67.27.3773.2133@67.27.3773.2133" timestamp="1584648459086" />
-    <state width="1874" height="259" key="GridCell.Tab.0.center" timestamp="1590089747375">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state width="1841" height="632" key="GridCell.Tab.0.bottom/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712638" />
+    <state width="1841" height="632" key="GridCell.Tab.0.center" timestamp="1591568712637">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.center/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747375" />
-    <state width="1863" height="611" key="GridCell.Tab.0.center/67.27.3773.2133@67.27.3773.2133" timestamp="1584648459086" />
-    <state width="1874" height="259" key="GridCell.Tab.0.left" timestamp="1590089747374">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state width="1841" height="632" key="GridCell.Tab.0.center/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712637" />
+    <state width="1841" height="632" key="GridCell.Tab.0.left" timestamp="1591568712637">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.left/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747374" />
-    <state width="1863" height="611" key="GridCell.Tab.0.left/67.27.3773.2133@67.27.3773.2133" timestamp="1584648459086" />
-    <state width="1874" height="259" key="GridCell.Tab.0.right" timestamp="1590089747377">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state width="1841" height="632" key="GridCell.Tab.0.left/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712637" />
+    <state width="1841" height="632" key="GridCell.Tab.0.right" timestamp="1591568712638">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.right/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747377" />
-    <state width="1863" height="611" key="GridCell.Tab.0.right/67.27.3773.2133@67.27.3773.2133" timestamp="1584648459086" />
-    <state width="1863" height="750" key="GridCell.Tab.1.bottom" timestamp="1584298753145">
+    <state width="1841" height="632" key="GridCell.Tab.0.right/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712638" />
+    <state width="1811" height="774" key="GridCell.Tab.1.bottom" timestamp="1591050284189">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
-    <state width="1863" height="750" key="GridCell.Tab.1.bottom/67.27.3773.2133@67.27.3773.2133" timestamp="1584298753145" />
-    <state width="1863" height="750" key="GridCell.Tab.1.center" timestamp="1584298753144">
+    <state width="1811" height="774" key="GridCell.Tab.1.bottom/67.27.3773.2133@67.27.3773.2133" timestamp="1591050284189" />
+    <state width="1811" height="774" key="GridCell.Tab.1.center" timestamp="1591050284189">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
-    <state width="1863" height="750" key="GridCell.Tab.1.center/67.27.3773.2133@67.27.3773.2133" timestamp="1584298753144" />
-    <state width="1863" height="750" key="GridCell.Tab.1.left" timestamp="1584298753144">
+    <state width="1811" height="774" key="GridCell.Tab.1.center/67.27.3773.2133@67.27.3773.2133" timestamp="1591050284189" />
+    <state width="1811" height="774" key="GridCell.Tab.1.left" timestamp="1591050284189">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
-    <state width="1863" height="750" key="GridCell.Tab.1.left/67.27.3773.2133@67.27.3773.2133" timestamp="1584298753144" />
-    <state width="1863" height="750" key="GridCell.Tab.1.right" timestamp="1584298753145">
+    <state width="1811" height="774" key="GridCell.Tab.1.left/67.27.3773.2133@67.27.3773.2133" timestamp="1591050284189" />
+    <state width="1811" height="774" key="GridCell.Tab.1.right" timestamp="1591050284189">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
-    <state width="1863" height="750" key="GridCell.Tab.1.right/67.27.3773.2133@67.27.3773.2133" timestamp="1584298753145" />
-    <state x="528" y="322" width="910" height="737" key="SettingsEditor" timestamp="1590084461145">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state width="1811" height="774" key="GridCell.Tab.1.right/67.27.3773.2133@67.27.3773.2133" timestamp="1591050284189" />
+    <state x="2616" y="795" width="550" height="595" key="RollbackChangesDialog" timestamp="1590092009683">
+      <screen x="67" y="27" width="3773" height="2133" />
+    </state>
+    <state x="2616" y="795" width="550" height="595" key="RollbackChangesDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1590092009683" />
+    <state x="1104" y="563" width="910" height="737" key="SettingsEditor" timestamp="1590092621875">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="528" y="322" width="910" height="737" key="SettingsEditor/0.27.1920.1173@0.27.1920.1173" timestamp="1590084461145" />
-    <state x="1104" y="563" width="1639" height="730" key="SettingsEditor/67.27.3773.2133@67.27.3773.2133" timestamp="1584647446046" />
+    <state x="1104" y="563" width="1639" height="730" key="SettingsEditor/67.27.3773.2133@67.27.3773.2133" timestamp="1590092621875" />
     <state x="1797" y="1001" width="303" height="182" key="VCS.ChangelistChooser" timestamp="1584648448426">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
@@ -310,16 +355,33 @@
     </state>
     <state x="555" y="345" width="517" height="299" key="Vcs.Push.Dialog.v2/0.27.1920.1173@0.27.1920.1173" timestamp="1590090750152" />
     <state x="1158" y="605" key="Vcs.Push.Dialog.v2/67.27.3773.2133@67.27.3773.2133" timestamp="1584670352631" />
+    <state x="2053" y="125" width="1687" height="1935" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590092091388">
+      <screen x="67" y="27" width="3773" height="2133" />
+    </state>
+    <state x="2053" y="125" width="1687" height="1935" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1590092091388" />
     <state x="1278" y="778" key="com.intellij.ide.util.TipDialog" timestamp="1584646796010">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
+    <state x="2604" y="775" width="554" height="637" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590616284599">
+      <screen x="67" y="27" width="3773" height="2133" />
+    </state>
+    <state x="2604" y="775" width="554" height="637" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.3773.2133@67.27.3773.2133" timestamp="1590616284599" />
+    <state x="2657" y="1008" width="459" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591206556189">
+      <screen x="67" y="27" width="3773" height="2133" />
+    </state>
+    <state x="2657" y="1008" width="459" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.3773.2133@67.27.3773.2133" timestamp="1591206556189" />
     <state x="584" y="389" width="741" height="456" key="git4idea.merge.GitPullDialog" timestamp="1590089009535">
       <screen x="0" y="27" width="1920" height="1173" />
     </state>
     <state x="584" y="389" width="741" height="456" key="git4idea.merge.GitPullDialog/0.27.1920.1173@0.27.1920.1173" timestamp="1590089009535" />
-    <state x="623" y="289" width="672" height="678" key="search.everywhere.popup" timestamp="1590085512268">
-      <screen x="0" y="27" width="1920" height="1173" />
+    <state x="1291" y="503" width="1321" height="1233" key="search.everywhere.popup" timestamp="1590596317392">
+      <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="623" y="289" width="672" height="678" key="search.everywhere.popup/0.27.1920.1173@0.27.1920.1173" timestamp="1590085512268" />
+    <state x="1291" y="503" width="1321" height="1233" key="search.everywhere.popup/67.27.3773.2133@67.27.3773.2133" timestamp="1590596317392" />
+    <state x="2621" y="984" width="540" height="216" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1590092291630">
+      <screen x="67" y="27" width="3773" height="2133" />
+    </state>
+    <state x="2621" y="984" width="540" height="216" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1590092291630" />
   </component>
 </project>
