@@ -10,14 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09a86893-fce4-4baa-b732-abd4a92151d7" name="Default Changelist" comment="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me&#10;&#10;fixed local google credential path error">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/elia.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neural_net.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reading_through_gnlp.py" afterDir="false" />
+    <list default="true" id="09a86893-fce4-4baa-b732-abd4a92151d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyArticle.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyArticle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraping_training_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraping_training_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_net.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590090731848</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="much of the framework for the neural net is developed.  Bugs still remain with training though (I think I am misinterpreting the softmax/nlllllllllllllllloss function (lots of l's for a fella that takes lots of l's)).  This is something to do with the shape of the data but ive got no idea how to fix it so thats supes awks.  give me a day or two and this might be fixed (or i might forget about it who knows man).&#10;&#10;project report:&#10;medium vibes, could be better&#10;&#10;things I want to do: start working on the backbone for the chrome extension &amp; migrate the program to google cloud&#10;DOCUMENT SHIDD PLEASE UGH I HATE HOW TERRIBLY I COMMENT CODE THIS IS A PROBLEM (future employers please disregard this statement I have perfect and immaculate documentation thx)">
+      <created>1591815507627</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1591815507627</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -273,54 +275,43 @@
     <MESSAGE value="scraped &amp; parsed all of the allsides data into sources.pkl&#10;must use pickle to unpack it into a massive dictionary (~600 sources)&#10;next steps:&#10;1. scrape/grab all of the words and their hierarchies (bad time probably)&#10;2. determine subjects of sentences with google nlp&#10;3. sentiment score towards subjects&#10;4. combine that with the leaning of phrases to create rough bias&#10;&#10;possible routes after this is all done:&#10;1. refine the bias metric, something more intuitive/mathematically grounded&#10;2. somehow include omission bias (sounds like a bad time but there might be a cool way to do this without wanting 2 die)" />
     <MESSAGE value="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me" />
     <MESSAGE value="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me&#10;&#10;fixed local google credential path error" />
-    <option name="LAST_COMMIT_MESSAGE" value="now getting sentiment &amp; entity values/info from google cloud nlp&#10;&#10;still need to classify, i should stop putting this off but it really seems like a bad time&#10;&#10;omission bias ideas;&#10;1) Use salience score to determine how important certain topics are in other articles.&#10;2) basic idea: (omitted_salience)*(-1)*(average impact on bias to other articles?)&#10;3) somehow incorporate magnitude but not sure exactly how since the value is mega arbitrary and means literally zilch to me&#10;&#10;fixed local google credential path error" />
+    <MESSAGE value="much of the framework for the neural net is developed.  Bugs still remain with training though (I think I am misinterpreting the softmax/nlllllllllllllllloss function (lots of l's for a fella that takes lots of l's)).  This is something to do with the shape of the data but ive got no idea how to fix it so thats supes awks.  give me a day or two and this might be fixed (or i might forget about it who knows man).&#10;&#10;project report:&#10;medium vibes, could be better&#10;&#10;things I want to do: start working on the backbone for the chrome extension &amp; migrate the program to google cloud&#10;DOCUMENT SHIDD PLEASE UGH I HATE HOW TERRIBLY I COMMENT CODE THIS IS A PROBLEM (future employers please disregard this statement I have perfect and immaculate documentation thx)" />
+    <option name="LAST_COMMIT_MESSAGE" value="much of the framework for the neural net is developed.  Bugs still remain with training though (I think I am misinterpreting the softmax/nlllllllllllllllloss function (lots of l's for a fella that takes lots of l's)).  This is something to do with the shape of the data but ive got no idea how to fix it so thats supes awks.  give me a day or two and this might be fixed (or i might forget about it who knows man).&#10;&#10;project report:&#10;medium vibes, could be better&#10;&#10;things I want to do: start working on the backbone for the chrome extension &amp; migrate the program to google cloud&#10;DOCUMENT SHIDD PLEASE UGH I HATE HOW TERRIBLY I COMMENT CODE THIS IS A PROBLEM (future employers please disregard this statement I have perfect and immaculate documentation thx)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1548" y="754" width="800" height="677" key="#Notifications" timestamp="1584297012886">
-      <screen x="67" y="27" width="3773" height="2133" />
-    </state>
-    <state x="1548" y="754" width="800" height="677" key="#Notifications/67.27.3773.2133@67.27.3773.2133" timestamp="1584297012886" />
-    <state x="1691" y="964" width="515" height="257" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1584298361075">
-      <screen x="67" y="27" width="3773" height="2133" />
-    </state>
-    <state x="1691" y="964" width="515" height="257" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1584298361075" />
     <state x="2619" y="842" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590168494550">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="2619" y="842" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1590168494550" />
-    <state x="1622" y="687" width="652" height="811" key="#text_analysis_functions" timestamp="1584647651239">
-      <screen x="67" y="27" width="3773" height="2133" />
-    </state>
-    <state x="1622" y="687" width="652" height="811" key="#text_analysis_functions/67.27.3773.2133@67.27.3773.2133" timestamp="1584647651239" />
-    <state x="771" y="27" width="1337" height="1093" key="CommitChangelistDialog2" timestamp="1590092666165">
+    <state x="771" y="27" width="1337" height="1093" key="CommitChangelistDialog2" timestamp="1591815507506">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="358" y="27" width="912" height="915" key="CommitChangelistDialog2/0.27.1920.1173@0.27.1920.1173" timestamp="1590090729488" />
-    <state x="771" y="27" width="1337" height="1093" key="CommitChangelistDialog2/67.27.3773.2133@67.27.3773.2133" timestamp="1590092666165" />
+    <state x="771" y="27" width="1337" height="1093" key="CommitChangelistDialog2/67.27.3773.2133@67.27.3773.2133" timestamp="1591815507506" />
     <state x="1517" y="663" width="501" height="484" key="FileChooserDialogImpl" timestamp="1590092277116">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="1517" y="663" width="501" height="484" key="FileChooserDialogImpl/67.27.3773.2133@67.27.3773.2133" timestamp="1590092277116" />
-    <state width="1841" height="632" key="GridCell.Tab.0.bottom" timestamp="1591568712638">
+    <state width="1801" height="631" key="GridCell.Tab.0.bottom" timestamp="1593661058915">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.bottom/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747377" />
-    <state width="1841" height="632" key="GridCell.Tab.0.bottom/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712638" />
-    <state width="1841" height="632" key="GridCell.Tab.0.center" timestamp="1591568712637">
+    <state width="1801" height="631" key="GridCell.Tab.0.bottom/67.27.3773.2133@67.27.3773.2133" timestamp="1593661058915" />
+    <state width="1801" height="631" key="GridCell.Tab.0.center" timestamp="1593661058915">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.center/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747375" />
-    <state width="1841" height="632" key="GridCell.Tab.0.center/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712637" />
-    <state width="1841" height="632" key="GridCell.Tab.0.left" timestamp="1591568712637">
+    <state width="1801" height="631" key="GridCell.Tab.0.center/67.27.3773.2133@67.27.3773.2133" timestamp="1593661058915" />
+    <state width="1801" height="631" key="GridCell.Tab.0.left" timestamp="1593661058915">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.left/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747374" />
-    <state width="1841" height="632" key="GridCell.Tab.0.left/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712637" />
-    <state width="1841" height="632" key="GridCell.Tab.0.right" timestamp="1591568712638">
+    <state width="1801" height="631" key="GridCell.Tab.0.left/67.27.3773.2133@67.27.3773.2133" timestamp="1593661058915" />
+    <state width="1801" height="631" key="GridCell.Tab.0.right" timestamp="1593661058915">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state width="1874" height="259" key="GridCell.Tab.0.right/0.27.1920.1173@0.27.1920.1173" timestamp="1590089747377" />
-    <state width="1841" height="632" key="GridCell.Tab.0.right/67.27.3773.2133@67.27.3773.2133" timestamp="1591568712638" />
+    <state width="1801" height="631" key="GridCell.Tab.0.right/67.27.3773.2133@67.27.3773.2133" timestamp="1593661058915" />
     <state width="1811" height="774" key="GridCell.Tab.1.bottom" timestamp="1591050284189">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
@@ -346,22 +337,15 @@
     </state>
     <state x="528" y="322" width="910" height="737" key="SettingsEditor/0.27.1920.1173@0.27.1920.1173" timestamp="1590084461145" />
     <state x="1104" y="563" width="1639" height="730" key="SettingsEditor/67.27.3773.2133@67.27.3773.2133" timestamp="1590092621875" />
-    <state x="1797" y="1001" width="303" height="182" key="VCS.ChangelistChooser" timestamp="1584648448426">
+    <state x="1158" y="605" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1591815513499">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
-    <state x="1797" y="1001" width="303" height="182" key="VCS.ChangelistChooser/67.27.3773.2133@67.27.3773.2133" timestamp="1584648448426" />
-    <state x="555" y="345" width="517" height="299" key="Vcs.Push.Dialog.v2" timestamp="1590090750152">
-      <screen x="0" y="27" width="1920" height="1173" />
-    </state>
     <state x="555" y="345" width="517" height="299" key="Vcs.Push.Dialog.v2/0.27.1920.1173@0.27.1920.1173" timestamp="1590090750152" />
-    <state x="1158" y="605" key="Vcs.Push.Dialog.v2/67.27.3773.2133@67.27.3773.2133" timestamp="1584670352631" />
+    <state x="1158" y="605" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.3773.2133@67.27.3773.2133" timestamp="1591815513499" />
     <state x="2053" y="125" width="1687" height="1935" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590092091388">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
     <state x="2053" y="125" width="1687" height="1935" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/67.27.3773.2133@67.27.3773.2133" timestamp="1590092091388" />
-    <state x="1278" y="778" key="com.intellij.ide.util.TipDialog" timestamp="1584646796010">
-      <screen x="67" y="27" width="3773" height="2133" />
-    </state>
     <state x="2604" y="775" width="554" height="637" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590616284599">
       <screen x="67" y="27" width="3773" height="2133" />
     </state>
